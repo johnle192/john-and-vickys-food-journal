@@ -1,26 +1,18 @@
-import './App.css'
-import {Card, CardContent, Grid, Typography} from "@mui/material";
-import RestaurantCard from "./components/RestaurantCard.tsx";
+import './App.css';
+import { Stack } from '@mui/material';
+import RestaurantCard from './components/RestaurantCard.tsx';
 
 function App() {
   return (
     <div>
-      {/*<CardHeader>*/}
-      {/*  Lorem Ipsem*/}
-      {/*</CardHeader>*/}
-
-      <Grid
-        container
-        spacing={2}
-        direction="column"
-        justifyContent="space-evenly"
-        alignItems="center"
-      >
+      <Stack spacing={2}>
         {/*TODO: add data and iterate*/}
         <RestaurantCard />
-      </Grid>
+        <RestaurantCard />
+        <RestaurantCard />
+      </Stack>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
