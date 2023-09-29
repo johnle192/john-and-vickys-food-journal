@@ -11,6 +11,7 @@ function App() {
         <RestaurantCard />
         <RestaurantCard />
       </Stack>
+      {/*  TODO: put map here, and set right*/}
     </div>
   );
 }

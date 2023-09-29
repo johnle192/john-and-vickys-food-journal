@@ -8,10 +8,11 @@ export default function RestaurantCard() {
           Ramen
         </Typography>
         <Divider />
+        {/* TODO: fix the margins on this */}
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ marginTop: '10px' }}
+          sx={{ marginTop: '10px', marginBottom: '4px' }}
         >
           Hits the spot, John had tonkotsu, Vicky had shoyu, def get the
           takoyaki, can't go wrong with karage
