@@ -32,8 +32,8 @@ export default function Map() {
     }
   }, []);
   return (
-    <div ref={mapContainer} className="h-full w-svw">
-      MAPPPPPPP
+    <div ref={mapContainer} className="h-full w-full">
+      MAP
     </div>
   );
 }
