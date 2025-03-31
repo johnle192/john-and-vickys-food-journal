@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^2.0.3",
+    "@types/geojson": "^7946.0.16",
     "autoprefixer": "^10.4.19",
     "mapbox-gl": "^2.15.0",
     "postcss": "^8.4.38",

@@ -22,7 +22,7 @@ function App() {
 
           <div className="map-container h-full w-3/5 left-auto right-0 z-10 fixed">
             {/* TODO: This might need a calculation like on eater calc(100% - 150px - 95px - 20px - 10px)*/}
-            <div className="relative overflow-hidden h-dvh m-5">
+            <div className="relative overflow-hidden h-5/6 m-5">
               <Map />
             </div>
           </div>
