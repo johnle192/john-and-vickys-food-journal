@@ -1,8 +1,34 @@
 import mapboxgl from 'mapbox-gl';
 import { useEffect, useRef, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { FeatureCollection, Point } from 'geojson';
 
 mapboxgl.accessToken = String(import.meta.env.VITE_MAPBOX_TOKEN);
+
+interface Coordinates {
+  longitude: number;
+  latitude: number;
+  accuracy?: string;
+  routable_points?: { name?: string; longitude: number; latitude: number }[];
+}
+
+interface Properties {
+  mapbox_id: string;
+  feature_type:
+    | 'country'
+    | 'region'
+    | 'postcode'
+    | 'district'
+    | 'place'
+    | 'locality'
+    | 'neighborhood'
+    | 'street'
+    | 'address';
+  name: string;
+  name_preferred?: string;
+  full_address?: string;
+  coordinates: Coordinates;
+}
 
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -46,22 +72,26 @@ export default function Map() {
           access_token: mapboxgl.accessToken,
           bbox: '-122.5,47,122,48'
         };
-        const queryString = new URLSearchParams(
+
+        const queryString: string = new URLSearchParams(
           params as Record<string, string>
         ).toString();
-        const response = await fetch(
+
+        const response: Response = await fetch(
           `https://api.mapbox.com/search/geocode/v6/forward?q=${queryString}`
         );
 
-        // TODO: figure out what type this should be
-        const data = await response.json();
+        const data = (await response.json()) as FeatureCollection<
+          Point,
+          Properties
+        >;
 
         if (data.features.length > 0) {
           // TODO: figure out how to find the "correct" Feature
           // console.log(data);
-          const [lng, lat] = data.features[1].geometry.coordinates;
+          const [longitude, latitude] = data.features[1].geometry.coordinates;
 
-          new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+          new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
         }
       } catch (error) {
         console.error('Error fetching coordinates:', error);
