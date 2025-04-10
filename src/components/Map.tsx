@@ -30,6 +30,17 @@ interface Properties {
   coordinates: Coordinates;
 }
 
+interface BatchRequestBodyFragment {
+  types: string[];
+  q: string;
+  bbox: [number, number, number, number];
+  limit: number;
+}
+
+interface BatchResponseBody {
+  batch: FeatureCollection<Point, Properties>[];
+}
+
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
@@ -66,33 +77,42 @@ export default function Map() {
 
     const fetchCoordinates = async () => {
       try {
-        // TODO: figure out how to do this in bulk
-        const params = {
-          q: '4523 California Ave SW, Seattle, WA 98116',
-          access_token: mapboxgl.accessToken,
-          bbox: '-122.5,47,122,48'
-        };
+        // TODO: figure out how to get addresses from restaurants.json
+        // or set up a CMS?
+        const addresses: string[] = [
+          '4523 California Ave SW, Seattle, WA 98116',
+          '3315 Beacon Ave S, Seattle, WA 98144'
+        ];
 
-        const queryString: string = new URLSearchParams(
-          params as Record<string, string>
-        ).toString();
-
-        const response: Response = await fetch(
-          `https://api.mapbox.com/search/geocode/v6/forward?q=${queryString}`
+        const requestBody: BatchRequestBodyFragment[] = addresses.map(
+          (address: string): BatchRequestBodyFragment => ({
+            types: ['address'],
+            q: address,
+            bbox: [-122.5, 47, 122, 48],
+            limit: 1
+          })
         );
 
-        const data = (await response.json()) as FeatureCollection<
-          Point,
-          Properties
-        >;
+        const response: Response = await fetch(
+          `https://api.mapbox.com/search/geocode/v6/batch?access_token=${mapboxgl.accessToken}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody)
+          }
+        );
 
-        if (data.features.length > 0) {
-          // TODO: figure out how to find the "correct" Feature
-          // console.log(data);
-          const [longitude, latitude] = data.features[1].geometry.coordinates;
+        const responseBody = (await response.json()) as BatchResponseBody;
 
-          new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
-        }
+        responseBody.batch.forEach(
+          (featureCollection: FeatureCollection<Point, Properties>) => {
+            if (featureCollection.features.length > 0) {
+              const [longitude, latitude] =
+                featureCollection.features[0].geometry.coordinates;
+              new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+            }
+          }
+        );
       } catch (error) {
         console.error('Error fetching coordinates:', error);
       }
