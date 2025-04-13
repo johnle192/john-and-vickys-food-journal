@@ -30,6 +30,23 @@ interface Properties {
   coordinates: Coordinates;
 }
 
+interface Restaurants {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  city: string;
+  area: string[];
+  address: string;
+  cuisine: string;
+  notes: string;
+  dined: boolean;
+}
+
+interface RestaurantsResponseBody {
+  docs: Restaurants[];
+}
+
 interface BatchRequestBodyFragment {
   types: string[];
   q: string;
@@ -44,6 +61,29 @@ interface BatchResponseBody {
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
+
+  // TODO: this probably goes in app and gets passed into the other two components
+  const [restaurants, setRestaurants] = useState<Restaurants[] | null>(null);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const response: Response = await fetch(
+          `http://localhost:3000/api/restaurants`
+        );
+
+        const responseBody = (await response.json()) as RestaurantsResponseBody;
+
+        setRestaurants(responseBody.docs);
+      } catch (error) {
+        console.error('Error fetching restaurants:', error);
+      }
+    };
+
+    fetchRestaurants().catch((error) => {
+      console.error('Error in fetchRestaurants:', error);
+    });
+  }, []);
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -73,16 +113,13 @@ export default function Map() {
   }, []);
 
   useEffect(() => {
-    if (!map) return;
+    if (!map || !restaurants) return;
 
     const fetchCoordinates = async () => {
       try {
-        // TODO: figure out how to get addresses from restaurants.json
-        // or set up a CMS?
-        const addresses: string[] = [
-          '4523 California Ave SW, Seattle, WA 98116',
-          '3315 Beacon Ave S, Seattle, WA 98144'
-        ];
+        const addresses: string[] = restaurants.map(
+          (restaurants: Restaurants): string => restaurants.address
+        );
 
         const requestBody: BatchRequestBodyFragment[] = addresses.map(
           (address: string): BatchRequestBodyFragment => ({
@@ -118,8 +155,10 @@ export default function Map() {
       }
     };
 
-    fetchCoordinates();
-  }, [map]);
+    fetchCoordinates().catch((error) =>
+      console.error('Error in fetchCoordinates:', error)
+    );
+  }, [map, restaurants]);
 
   return (
     <div ref={mapContainer} className="h-full w-full">

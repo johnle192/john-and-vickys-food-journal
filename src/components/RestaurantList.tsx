@@ -1,6 +1,7 @@
 import restaurants from '../restaurants.json';
 
 export default function RestaurantList() {
+  // TODO: refactor to use cms
   const items = restaurants.seattle;
 
   return (
