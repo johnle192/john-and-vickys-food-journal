@@ -2,6 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import { useEffect, useRef, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { FeatureCollection, Point } from 'geojson';
+import { Restaurant } from '../common/types.ts';
 
 mapboxgl.accessToken = String(import.meta.env.VITE_MAPBOX_TOKEN);
 
@@ -30,23 +31,6 @@ interface Properties {
   coordinates: Coordinates;
 }
 
-interface Restaurants {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  name: string;
-  city: string;
-  area: string[];
-  address: string;
-  cuisine: string;
-  notes: string;
-  dined: boolean;
-}
-
-interface RestaurantsResponseBody {
-  docs: Restaurants[];
-}
-
 interface BatchRequestBodyFragment {
   types: string[];
   q: string;
@@ -58,32 +42,14 @@ interface BatchResponseBody {
   batch: FeatureCollection<Point, Properties>[];
 }
 
-export default function Map() {
+interface MapProps {
+  restaurants: Restaurant[];
+}
+
+export default function Map(props: React.PropsWithChildren<MapProps>) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
-
-  // TODO: this probably goes in app and gets passed into the other two components
-  const [restaurants, setRestaurants] = useState<Restaurants[] | null>(null);
-
-  useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const response: Response = await fetch(
-          `http://localhost:3000/api/restaurants`
-        );
-
-        const responseBody = (await response.json()) as RestaurantsResponseBody;
-
-        setRestaurants(responseBody.docs);
-      } catch (error) {
-        console.error('Error fetching restaurants:', error);
-      }
-    };
-
-    fetchRestaurants().catch((error) => {
-      console.error('Error in fetchRestaurants:', error);
-    });
-  }, []);
+  const restaurants: Restaurant[] = props.restaurants;
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -118,14 +84,14 @@ export default function Map() {
     const fetchCoordinates = async () => {
       try {
         const addresses: string[] = restaurants.map(
-          (restaurants: Restaurants): string => restaurants.address
+          (restaurant: Restaurant): string => restaurant.address
         );
 
         const requestBody: BatchRequestBodyFragment[] = addresses.map(
           (address: string): BatchRequestBodyFragment => ({
             types: ['address'],
             q: address,
-            bbox: [-122.5, 47, 122, 48],
+            bbox: [-122.5, 47, -122, 48],
             limit: 1
           })
         );
@@ -142,11 +108,23 @@ export default function Map() {
         const responseBody = (await response.json()) as BatchResponseBody;
 
         responseBody.batch.forEach(
-          (featureCollection: FeatureCollection<Point, Properties>) => {
-            if (featureCollection.features.length > 0) {
+          (
+            featureCollection: FeatureCollection<Point, Properties>,
+            index: number
+          ) => {
+            if (
+              featureCollection &&
+              Array.isArray(featureCollection.features) &&
+              featureCollection.features.length > 0
+            ) {
               const [longitude, latitude] =
                 featureCollection.features[0].geometry.coordinates;
               new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
+            } else {
+              console.warn(
+                `No features for address at index ${index}`,
+                featureCollection
+              );
             }
           }
         );

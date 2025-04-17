@@ -1,8 +1,39 @@
 import './App.css';
 import RestaurantList from './components/RestaurantList.tsx';
 import Map from './components/Map.tsx';
+import { useEffect, useState } from 'react';
+import { Restaurant } from './common/types.ts';
+
+// const foodJournalCmsUrl = String(import.meta.env.FOOD_JOURNAL_CMS_URL);
+
+interface RestaurantsResponseBody {
+  docs: Restaurant[];
+}
 
 function App() {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        // TODO env var for this
+        const response: Response = await fetch(
+          `http://localhost:3000/api/restaurants`
+        );
+
+        const responseBody = (await response.json()) as RestaurantsResponseBody;
+
+        setRestaurants(responseBody.docs);
+      } catch (error) {
+        console.error('Error fetching restaurants:', error);
+      }
+    };
+
+    fetchRestaurants().catch((error) => {
+      console.error('Error in fetchRestaurants:', error);
+    });
+  }, []);
+
   return (
     <div className="flex min-h-full w-full flex-col">
       <div className="mx-auto flex w-full items-start py-24 ">
@@ -17,13 +48,14 @@ function App() {
 
         <main className="flex">
           <div className="resturant-container sticky top-8 hidden w-2/5 shrink-0 lg:block">
-            <RestaurantList />
+            <RestaurantList restaurants={restaurants} />
           </div>
 
           <div className="map-container h-full w-3/5 left-auto right-0 z-10 fixed">
             {/* TODO: This might need a calculation like on eater calc(100% - 150px - 95px - 20px - 10px)*/}
             <div className="relative overflow-hidden h-5/6 m-5">
-              <Map />
+              {/* TODO: is there a better way to get around not having null here?*/}
+              <Map restaurants={restaurants} />
             </div>
           </div>
         </main>
