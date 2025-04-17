@@ -4,6 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { FeatureCollection, Point } from 'geojson';
 import { Restaurant } from '../common/types.ts';
 
+// TODO: make this private now that I have a backend
 mapboxgl.accessToken = String(import.meta.env.VITE_MAPBOX_TOKEN);
 
 interface Coordinates {

@@ -4,7 +4,9 @@ import Map from './components/Map.tsx';
 import { useEffect, useState } from 'react';
 import { Restaurant } from './common/types.ts';
 
-// const foodJournalCmsUrl = String(import.meta.env.FOOD_JOURNAL_CMS_URL);
+const foodJournalCmsUrl = String(
+  import.meta.env.VITE_FOOD_JOURNAL_CMS_BASE_URL
+);
 
 interface RestaurantsResponseBody {
   docs: Restaurant[];
@@ -16,9 +18,8 @@ function App() {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        // TODO env var for this
         const response: Response = await fetch(
-          `http://localhost:3000/api/restaurants`
+          `${foodJournalCmsUrl}/api/restaurants`
         );
 
         const responseBody = (await response.json()) as RestaurantsResponseBody;
