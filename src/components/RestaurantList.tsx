@@ -10,7 +10,7 @@ export default function RestaurantList(
   const restaurants: Restaurant[] = props.restaurants;
 
   return (
-    <div className="overflow-hidden bg-white shadow m-5 sm:rounded-md">
+    <div className="m-5 overflow-hidden bg-white shadow sm:rounded-md">
       <ul role="list" className="divide-y divide-gray-200">
         {restaurants.map((item) => (
           <li key={item.id} className="px-4 py-4 sm:px-6">
@@ -20,7 +20,7 @@ export default function RestaurantList(
               </h3>
             </div>
             <div className="">
-              <p className="pt-2 pb-6 text-sm text-gray-600">{item.notes}</p>
+              <p className="pb-6 pt-2 text-sm text-gray-600">{item.notes}</p>
             </div>
           </li>
         ))}
