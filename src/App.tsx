@@ -36,8 +36,8 @@ function App() {
   }, []);
 
   return (
-    <div className="flex min-h-full w-dvw flex-col">
-      <div className="mx-auto flex w-full items-start py-24 ">
+    <div className="flex min-h-screen w-full flex-col">
+      <div className="mx-auto flex w-full items-start mt-20">
         <header className="shrink-0 border-b border-gray-200 bg-white fixed top-0 left-0 right-0 z-50">
           <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
             <h3 className="text-base font-semibold leading-6 text-gray-900">
@@ -46,14 +46,13 @@ function App() {
             </h3>
           </div>
         </header>
-        <main className="flex w-full">
+        <main className="flex h-full">
           <div className="resturant-container sticky top-8 hidden w-2/5 shrink-0 lg:block">
             <RestaurantList restaurants={restaurants} />
           </div>
 
-          <div className="map-container h-full w-3/5 left-auto right-0 z-10 fixed">
-            {/* TODO: This might need a calculation like on eater calc(100% - 150px - 95px - 20px - 10px)*/}
-            <div className="relative overflow-hidden h-5/6 m-5">
+          <div className="map-container sticky top-20 h-[calc(100vh-8rem)] w-3/5 left-auto right-0 z-10">
+            <div className="h-full m-5 overflow-hidden">
               <Map restaurants={restaurants} />
             </div>
           </div>
