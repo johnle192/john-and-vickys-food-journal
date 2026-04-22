@@ -4,7 +4,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { FeatureCollection, Point } from 'geojson';
 import { Restaurant } from '../common/types.ts';
 
-// TODO: make this private now that I have a backend
 mapboxgl.accessToken = String(import.meta.env.VITE_MAPBOX_TOKEN);
 
 interface Coordinates {
@@ -140,8 +139,10 @@ export default function Map(props: React.PropsWithChildren<MapProps>) {
   }, [map, restaurants]);
 
   return (
-    <div ref={mapContainer} className="h-full w-full">
-      MAP
+    <div className="m-4 h-full overflow-hidden">
+      <div ref={mapContainer} className="h-full w-full">
+        MAP
+      </div>
     </div>
   );
 }

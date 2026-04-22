@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Lady Jaye",
+    "city": "seattle",
+    "area": ["west_seattle"],
+    "address": "4523 California Ave SW, Seattle, WA 98116",
+    "cuisine": "American",
+    "notes": "great place to get local ethically raised meat and eggs, delicious cocktails, really good pastries and biscuits! menu is obv heavy on the meat, J loves it",
+    "dined": true
+  },
+  {
+    "name": "familyfriend",
+    "city": "seattle",
+    "area": ["beacon_hill"],
+    "address": "3315 Beacon Ave S, Seattle, WA 98144",
+    "cuisine": "Guamanian",
+    "notes": "FAVE place in Seattle. best burger and truffle fries. everything hits. ***CORN SOUP*** tinaktak rice bowl!!!! almost 0 signange, no reservations, no phone number. you just gotta show up!",
+    "dined": true
+  },
+  {
+    "name": "Archipelago",
+    "city": "seattle",
+    "area": ["columbia_city"],
+    "address": "5607 Rainier Ave S, Seattle, WA 98118",
+    "cuisine": "Filipino",
+    "notes": "james beard finalist, 13 course history lesson on/tribute to the fillipino american diaspora",
+    "dined": true
+  },
+  {
+    "name": "Canon",
+    "city": "seattle",
+    "area": ["capitol_hill"],
+    "address": "928 12th Ave, Seattle, WA 98122",
+    "cuisine": "American/Bar",
+    "notes": "A+ vibes, HUUUUGGGEEEE spirits menu, best cocktails we've had anywhere ever",
+    "dined": true
+  },
+  {
+    "name": "St. Andrews Pub",
+    "city": "seattle",
+    "area": ["ballard"],
+    "address": "7406 Aurora Ave N, Seattle, WA 98103",
+    "cuisine": "British Pub/Sports Bar",
+    "notes": "sports bar catering to the Denver Broncos, Florida Gators, and Liverpool FC. it's about the vibes not the drinks nor food",
+    "dined": true
+  },
+  {
+    "name": "Taste To Go",
+    "city": "kent",
+    "area": [],
+    "address": "18230 E Valley Hwy #153, Kent, WA 98032",
+    "cuisine": "Vietnamese Banh Mi",
+    "notes": "in ranch 99 mall. solid banh mi",
+    "dined": true
+  },
+  {
+    "name": "Mama Dough",
+    "city": "kent",
+    "area": [],
+    "address": "18230 E Valley Hwy Ste 156, Kent, WA 98032",
+    "cuisine": "Chinese/Shanghainese",
+    "notes": "in ranch 99 mall. yummy dumplings and hand-pulled noodles",
+    "dined": true
+  },
+  {
+    "name": "Kedai Makan",
+    "city": "seattle",
+    "area": ["belltown", "capitol_hill"],
+    "address": "2234 1st Ave, Seattle, WA 98122",
+    "cuisine": "Malaysian",
+    "notes": "locations in Cap Hill & Belltown. yummy vibrant beautiful dishes!",
+    "dined": true
+  },
+  {
+    "name": "Momiji",
+    "city": "seattle",
+    "area": ["capitol_hill", "south_lake_union"],
+    "address": "1522 12th Ave, Seattle, WA 98122",
+    "cuisine": "Japanese/Sushi",
+    "notes": "1 location in Capitol Hill, 1 in SLU. garden zen vibez. decent sashimi.",
+    "dined": true
+  },
+  {
+    "name": "Dough Joy",
+    "city": "seattle",
+    "area": ["west_seattle", "capitol_hill"],
+    "address": "4310 SW Oregon St, Seattle, WA 98116",
+    "cuisine": "Donuts",
+    "notes": "1 location in W Seattle, 1 in Pike/Pine. vegan style donuts. also some gluten free options. very yummy and fluffy!",
+    "dined": true
+  }
+]

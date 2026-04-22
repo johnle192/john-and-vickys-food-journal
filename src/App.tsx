@@ -1,39 +1,12 @@
 import './App.css';
 import RestaurantList from './components/RestaurantList.tsx';
 import Map from './components/Map.tsx';
-import { useEffect, useState } from 'react';
 import { Restaurant } from './common/types.ts';
+import restaurantsData from './data/restaurants.json';
 
-const foodJournalCmsUrl = String(
-  import.meta.env.VITE_FOOD_JOURNAL_CMS_BASE_URL
-);
-
-interface RestaurantsResponseBody {
-  docs: Restaurant[];
-}
+const restaurants: Restaurant[] = restaurantsData as Restaurant[];
 
 function App() {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-
-  useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const response: Response = await fetch(
-          `${foodJournalCmsUrl}/api/restaurants`
-        );
-
-        const responseBody = (await response.json()) as RestaurantsResponseBody;
-
-        setRestaurants(responseBody.docs);
-      } catch (error) {
-        console.error('Error fetching restaurants:', error);
-      }
-    };
-
-    fetchRestaurants().catch((error) => {
-      console.error('Error in fetchRestaurants:', error);
-    });
-  }, []);
 
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -46,15 +19,13 @@ function App() {
             </h3>
           </div>
         </header>
-        <main className="flex h-full">
-          <div className="resturant-container sticky top-8 hidden w-2/5 shrink-0 lg:block">
+        <main className="mx-4 flex h-full">
+          <div className="resturant-container sticky top-8 mb-4 hidden w-2/5 shrink-0 lg:block">
             <RestaurantList restaurants={restaurants} />
           </div>
 
           <div className="map-container sticky left-auto right-0 top-20 z-10 h-[calc(100vh-8rem)] w-3/5">
-            <div className="m-5 h-full overflow-hidden">
-              <Map restaurants={restaurants} />
-            </div>
+            <Map restaurants={restaurants} />
           </div>
         </main>
       </div>

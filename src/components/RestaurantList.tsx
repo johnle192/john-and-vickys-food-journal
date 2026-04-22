@@ -10,10 +10,10 @@ export default function RestaurantList(
   const restaurants: Restaurant[] = props.restaurants;
 
   return (
-    <div className="m-5 overflow-hidden bg-white shadow sm:rounded-md">
+    <div className="m-4 overflow-hidden bg-white shadow sm:rounded-md">
       <ul role="list" className="divide-y divide-gray-200">
         {restaurants.map((item) => (
-          <li key={item.id} className="px-4 py-4 sm:px-6">
+          <li key={item.name} className="px-8 py-4 sm:px-10">
             <div className="border-b border-gray-200 bg-white py-4">
               <h3 className="text-base font-semibold leading-6 text-gray-900">
                 {item.name}
