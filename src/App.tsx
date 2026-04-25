@@ -13,7 +13,10 @@ function App() {
 
   const handleMarkerClick = (name: string) => {
     setActiveId(name);
-    listRefs.current[name]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    listRefs.current[name]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
   };
 
   return (
@@ -28,22 +31,17 @@ function App() {
           </div>
         </header>
         <main className="mx-4 flex h-full">
-          <div className="resturant-container sticky top-8 mb-4 hidden w-2/5 shrink-0 lg:block">
-            <RestaurantList
-              restaurants={restaurants}
-              activeId={activeId}
-              onActiveChange={setActiveId}
-              listRefs={listRefs}
-            />
-          </div>
-
-          <div className="map-container sticky left-auto right-0 top-20 z-10 h-[calc(100vh-8rem)] w-3/5">
-            <Map
-              restaurants={restaurants}
-              activeId={activeId}
-              onMarkerClick={handleMarkerClick}
-            />
-          </div>
+          <RestaurantList
+            restaurants={restaurants}
+            activeId={activeId}
+            onActiveChange={setActiveId}
+            listRefs={listRefs}
+          />
+          <Map
+            restaurants={restaurants}
+            activeId={activeId}
+            onMarkerClick={handleMarkerClick}
+          />
         </main>
       </div>
     </div>

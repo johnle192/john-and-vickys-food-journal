@@ -48,10 +48,16 @@ interface MapProps {
   onMarkerClick: (name: string) => void;
 }
 
-export default function Map({ restaurants, activeId, onMarkerClick }: MapProps) {
+export default function Map({
+  restaurants,
+  activeId,
+  onMarkerClick
+}: MapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
-  const markersRef = useRef<Record<string, HTMLButtonElement>>({});
+  const markersRef = useRef<
+    Record<string, { el: HTMLButtonElement; lngLat: [number, number] }>
+  >({});
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -116,7 +122,7 @@ export default function Map({ restaurants, activeId, onMarkerClick }: MapProps) 
 
             const el = document.createElement('button');
             el.className =
-              'w-7 h-7 rounded-full text-white text-xs font-bold border-2 border-white shadow-md cursor-pointer bg-zinc-800 hover:bg-red-500 transition-colors flex items-center justify-center';
+              'w-7 h-7 rounded-full text-white text-xs font-bold border-2 border-white shadow-md cursor-pointer bg-zinc-800 hover:bg-[var(--md-sys-color-on-primary-container)] transition-colors flex items-center justify-center';
             el.textContent = String(index + 1);
             el.addEventListener('click', () => onMarkerClick(restaurant.name));
 
@@ -124,7 +130,10 @@ export default function Map({ restaurants, activeId, onMarkerClick }: MapProps) 
               .setLngLat([longitude, latitude])
               .addTo(map);
 
-            markersRef.current[restaurant.name] = el;
+            markersRef.current[restaurant.name] = {
+              el,
+              lngLat: [longitude, latitude]
+            };
           } else {
             console.warn(`No features for address at index ${index}`);
           }
@@ -140,20 +149,37 @@ export default function Map({ restaurants, activeId, onMarkerClick }: MapProps) 
   }, [map]);
 
   useEffect(() => {
-    Object.entries(markersRef.current).forEach(([name, el]) => {
+    Object.entries(markersRef.current).forEach(([name, { el }]) => {
       if (name === activeId) {
         el.classList.remove('bg-zinc-800');
-        el.classList.add('bg-red-600', 'scale-110');
+        el.classList.add(
+          'bg-[var(--md-sys-color-primary)]',
+          'scale-110'
+        );
+        el.style.zIndex = '1';
       } else {
-        el.classList.remove('bg-red-600', 'scale-110');
+        el.classList.remove(
+          'bg-[var(--md-sys-color-primary)]',
+          'scale-110'
+        );
         el.classList.add('bg-zinc-800');
+        el.style.zIndex = '';
       }
     });
-  }, [activeId]);
+
+    if (activeId && map) {
+      const active = markersRef.current[activeId];
+      if (active) {
+        map.flyTo({ center: active.lngLat, zoom: 14, duration: 800 });
+      }
+    }
+  }, [activeId, map]);
 
   return (
-    <div className="m-4 h-full overflow-hidden">
-      <div ref={mapContainer} className="h-full w-full" />
+    <div className="map-container sticky left-auto right-0 top-20 z-10 h-[calc(100vh-8rem)] w-3/5">
+      <div className="m-4 h-full overflow-hidden">
+        <div ref={mapContainer} className="h-full w-full" />
+      </div>
     </div>
   );
 }
