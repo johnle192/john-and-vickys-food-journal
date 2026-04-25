@@ -1,4 +1,5 @@
 import './App.css';
+import { useState, useRef } from 'react';
 import RestaurantList from './components/RestaurantList.tsx';
 import Map from './components/Map.tsx';
 import { Restaurant } from './common/types.ts';
@@ -7,6 +8,13 @@ import restaurantsData from './data/restaurants.json';
 const restaurants: Restaurant[] = restaurantsData as Restaurant[];
 
 function App() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const listRefs = useRef<Record<string, HTMLElement>>({});
+
+  const handleMarkerClick = (name: string) => {
+    setActiveId(name);
+    listRefs.current[name]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -21,11 +29,20 @@ function App() {
         </header>
         <main className="mx-4 flex h-full">
           <div className="resturant-container sticky top-8 mb-4 hidden w-2/5 shrink-0 lg:block">
-            <RestaurantList restaurants={restaurants} />
+            <RestaurantList
+              restaurants={restaurants}
+              activeId={activeId}
+              onActiveChange={setActiveId}
+              listRefs={listRefs}
+            />
           </div>
 
           <div className="map-container sticky left-auto right-0 top-20 z-10 h-[calc(100vh-8rem)] w-3/5">
-            <Map restaurants={restaurants} />
+            <Map
+              restaurants={restaurants}
+              activeId={activeId}
+              onMarkerClick={handleMarkerClick}
+            />
           </div>
         </main>
       </div>
