@@ -22,9 +22,9 @@ function App() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <div className="mx-auto mt-20 flex w-full items-start">
-        <header className="fixed left-0 right-0 top-0 z-50 shrink-0 border-b border-gray-200 bg-white">
+        <header className="fixed left-0 right-0 top-0 z-50 shrink-0 border-b border-outline-variant bg-surface">
           <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-            <h3 className="text-base font-semibold leading-6 text-gray-900">
+            <h3 className="text-base font-semibold leading-6 text-on-surface">
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               John and Vicky's Food Journal
             </h3>

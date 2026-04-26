@@ -122,7 +122,7 @@ export default function Map({
 
             const el = document.createElement('button');
             el.className =
-              'w-7 h-7 rounded-full text-white text-xs font-bold border-2 border-white shadow-md cursor-pointer bg-zinc-800 hover:bg-[var(--md-sys-color-on-primary-container)] transition-colors flex items-center justify-center';
+              'w-7 h-7 rounded-full text-inverse-on-surface text-xs font-bold border-2 border-inverse-on-surface shadow-md cursor-pointer bg-inverse-surface hover:bg-on-primary-container transition-colors flex items-center justify-center';
             el.textContent = String(index + 1);
             el.addEventListener('click', () => onMarkerClick(restaurant.name));
 
@@ -151,18 +151,12 @@ export default function Map({
   useEffect(() => {
     Object.entries(markersRef.current).forEach(([name, { el }]) => {
       if (name === activeId) {
-        el.classList.remove('bg-zinc-800');
-        el.classList.add(
-          'bg-[var(--md-sys-color-primary)]',
-          'scale-110'
-        );
+        el.classList.remove('bg-inverse-surface');
+        el.classList.add('bg-primary', 'scale-110');
         el.style.zIndex = '1';
       } else {
-        el.classList.remove(
-          'bg-[var(--md-sys-color-primary)]',
-          'scale-110'
-        );
-        el.classList.add('bg-zinc-800');
+        el.classList.remove('bg-primary', 'scale-110');
+        el.classList.add('bg-inverse-surface');
         el.style.zIndex = '';
       }
     });
