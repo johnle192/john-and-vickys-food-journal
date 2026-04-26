@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import RestaurantList from './components/RestaurantList.tsx';
 import Map from './components/Map.tsx';
 import { Restaurant } from './common/types.ts';
@@ -10,6 +10,19 @@ const restaurants: Restaurant[] = restaurantsData as Restaurant[];
 function App() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const listRefs = useRef<Record<string, HTMLElement>>({});
+
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
 
   const handleMarkerClick = (name: string) => {
     setActiveId(name);
@@ -28,6 +41,13 @@ function App() {
               {/* eslint-disable-next-line react/no-unescaped-entities */}
               John and Vicky's Food Journal
             </h3>
+            <button
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="rounded-full p-2 bg-surface-variant text-on-surface-variant transition-colors hover:bg-outline-variant hover:text-on-surface"
+            >
+              <i className="fa-duotone fa-light fa-moon-over-sun fa-lg" aria-hidden="true" />
+            </button>
           </div>
         </header>
         <main className="mx-4 flex h-full">
