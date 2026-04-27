@@ -170,7 +170,7 @@ export default function Map({
   }, [activeId, map]);
 
   return (
-    <div className="map-container sticky left-auto right-0 top-20 z-10 h-[calc(100vh-8rem)] w-3/5">
+    <div className="map-container h-full w-full lg:sticky lg:left-auto lg:right-0 lg:top-20 lg:z-10 lg:h-[calc(100vh-8rem)] lg:w-3/5">
       <div className="m-4 h-full overflow-hidden">
         <div ref={mapContainer} className="h-full w-full" />
       </div>

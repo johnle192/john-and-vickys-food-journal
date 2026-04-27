@@ -31,7 +31,7 @@ export default function RestaurantList({
   }, [restaurants]);
 
   return (
-    <div className="resturant-container sticky top-8 mb-4 hidden w-2/5 shrink-0 lg:block">
+    <div className="resturant-container mb-4 w-full lg:sticky lg:top-8 lg:w-2/5 lg:shrink-0">
       <div className="m-4 overflow-hidden bg-surface">
         <ul role="list" className="divide-y divide-outline-variant">
           {restaurants.map((item, i) => (

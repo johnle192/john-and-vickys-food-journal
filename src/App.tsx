@@ -9,6 +9,7 @@ const restaurants: Restaurant[] = restaurantsData as Restaurant[];
 
 function App() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [showMap, setShowMap] = useState(false);
   const listRefs = useRef<Record<string, HTMLElement>>({});
 
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -57,11 +58,28 @@ function App() {
             onActiveChange={setActiveId}
             listRefs={listRefs}
           />
-          <Map
-            restaurants={restaurants}
-            activeId={activeId}
-            onMarkerClick={handleMarkerClick}
-          />
+          <div className={`${showMap ? 'fixed inset-0 z-50' : 'hidden'} lg:contents`}>
+            <Map
+              restaurants={restaurants}
+              activeId={activeId}
+              onMarkerClick={handleMarkerClick}
+            />
+            <button
+              onClick={() => setShowMap(false)}
+              aria-label="Close map"
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-surface text-on-surface shadow-lg lg:hidden"
+            >
+              <i className="fa-solid fa-xmark" aria-hidden="true" />
+            </button>
+          </div>
+
+          <button
+            onClick={() => setShowMap(true)}
+            className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-on-primary shadow-lg lg:hidden"
+          >
+            <i className="fa-duotone fa-light fa-map" aria-hidden="true" />
+            Map
+          </button>
         </main>
       </div>
     </div>
