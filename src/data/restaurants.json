@@ -2,47 +2,77 @@
   {
     "name": "Lady Jaye",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4523 California Ave SW, Seattle, WA 98116",
     "cuisine": "American",
     "notes": "great place to get local ethically raised meat and eggs, delicious cocktails, really good pastries and biscuits! menu is obv heavy on the meat, J loves it",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.387145,
+      47.562238
+    ]
   },
   {
     "name": "familyfriend",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3315 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Guamanian",
     "notes": "FAVE place in Seattle. best burger and truffle fries. everything hits. ***CORN SOUP*** tinaktak rice bowl!!!! almost 0 signange, no reservations, no phone number. you just gotta show up!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.309004,
+      47.573588
+    ]
   },
   {
     "name": "Archipelago",
     "city": "seattle",
-    "area": ["columbia_city"],
+    "area": [
+      "columbia_city"
+    ],
     "address": "5607 Rainier Ave S, Seattle, WA 98118",
     "cuisine": "Filipino",
     "notes": "james beard finalist, 13 course history lesson on/tribute to the fillipino american diaspora",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.278237,
+      47.551663
+    ]
   },
   {
     "name": "Canon",
     "city": "seattle",
-    "area": ["capitol_hill"],
+    "area": [
+      "capitol_hill"
+    ],
     "address": "928 12th Ave, Seattle, WA 98122",
     "cuisine": "American/Bar",
     "notes": "A+ vibes, HUUUUGGGEEEE spirits menu, best cocktails we've had anywhere ever",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.316533,
+      47.611269
+    ]
   },
   {
     "name": "St. Andrews Pub",
     "city": "seattle",
-    "area": ["ballard"],
+    "area": [
+      "ballard"
+    ],
     "address": "7406 Aurora Ave N, Seattle, WA 98103",
     "cuisine": "British Pub/Sports Bar",
     "notes": "sports bar catering to the Denver Broncos, Florida Gators, and Liverpool FC. it's about the vibes not the drinks nor food",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.344209,
+      47.683146
+    ]
   },
   {
     "name": "Taste To Go",
@@ -51,7 +81,11 @@
     "address": "18230 E Valley Hwy #153, Kent, WA 98032",
     "cuisine": "Vietnamese Banh Mi",
     "notes": "in ranch 99 mall. solid banh mi",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.220475,
+      47.438748
+    ]
   },
   {
     "name": "Mama Dough",
@@ -60,34 +94,59 @@
     "address": "18230 E Valley Hwy Ste 156, Kent, WA 98032",
     "cuisine": "Chinese/Shanghainese",
     "notes": "in ranch 99 mall. yummy dumplings and hand-pulled noodles",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.220475,
+      47.438748
+    ]
   },
   {
     "name": "Kedai Makan",
     "city": "seattle",
-    "area": ["belltown", "capitol_hill"],
+    "area": [
+      "belltown",
+      "capitol_hill"
+    ],
     "address": "2234 1st Ave, Seattle, WA 98122",
     "cuisine": "Malaysian",
     "notes": "locations in Cap Hill & Belltown. yummy vibrant beautiful dishes!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.3461,
+      47.613432
+    ]
   },
   {
     "name": "Momiji",
     "city": "seattle",
-    "area": ["capitol_hill", "south_lake_union"],
+    "area": [
+      "capitol_hill",
+      "south_lake_union"
+    ],
     "address": "1522 12th Ave, Seattle, WA 98122",
     "cuisine": "Japanese/Sushi",
     "notes": "1 location in Capitol Hill, 1 in SLU. garden zen vibez. decent sashimi.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.31655,
+      47.614806
+    ]
   },
   {
     "name": "Dough Joy",
     "city": "seattle",
-    "area": ["west_seattle", "capitol_hill"],
+    "area": [
+      "west_seattle",
+      "capitol_hill"
+    ],
     "address": "4310 SW Oregon St, Seattle, WA 98116",
     "cuisine": "Donuts",
     "notes": "1 location in W Seattle, 1 in Pike/Pine. vegan style donuts. also some gluten free options. very yummy and fluffy!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.387316,
+      47.563091
+    ]
   },
   {
     "name": "Wild Cumin",
@@ -96,7 +155,11 @@
     "address": "18230 E Valley Hwy Ste 126, Kent, WA 98032",
     "cuisine": "Uyghur",
     "notes": "in ranch 99 mall. found noodles, empanada things just ok? closed and out of business now",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.220475,
+      47.438748
+    ]
   },
   {
     "name": "The Station",
@@ -105,7 +168,11 @@
     "address": "1600 S Roberto Maestas Festival St, Seattle, WA 98144",
     "cuisine": "Coffee",
     "notes": "locations in Beacon Hill & Columbia City. coffee spot along Link stops, standard coffee drinks but also Mexican ones, some beer/wine too",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.311883,
+      47.579585
+    ]
   },
   {
     "name": "Pho Bac",
@@ -114,7 +181,11 @@
     "address": "1240 S Jackson St, Seattle, WA 98144",
     "cuisine": "Vietnamese/pho",
     "notes": "locations in ID (original location, next to the Boat), Belltown, Mt. Baker (cash only this location). same owners as the boat, james beard finalist. 1st pho restaurant in seattle. j's parents' approved.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.315388,
+      47.599485
+    ]
   },
   {
     "name": "Rachel's Ginger Beer",
@@ -123,7 +194,11 @@
     "address": "1530 Post Alley, Seattle, WA 98101",
     "cuisine": "Bar",
     "notes": "1 location in pike place, but does not have ma'ono fried chicken inside (others do). ginger beer, cocktails, soft serve.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.341177,
+      47.609416
+    ]
   },
   {
     "name": "Ma'ono Fried Chicken",
@@ -132,7 +207,11 @@
     "address": "4210 SW Admiral Wy Suite A, Seattle, WA 98116",
     "cuisine": "American/Hawaiian",
     "notes": "1 location in w seattle, others are in rachel's ginger beer locations",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.385729,
+      47.581457
+    ]
   },
   {
     "name": "Fresh Flours",
@@ -141,7 +220,11 @@
     "address": "1624 S McClellan St, Seattle, WA 98144",
     "cuisine": "Coffee",
     "notes": "locations in Beacon Hill, Phinney Ridge, W Seattle, SLU. japanese-french inspired bakery.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.311244,
+      47.578817
+    ]
   },
   {
     "name": "Coffeeholic",
@@ -150,376 +233,626 @@
     "address": "3700 S Hudson St, Seattle, WA 98118",
     "cuisine": "Vietnamese/coffee",
     "notes": "locations in Columbia City, Greenwood. cute/trendy sweet asian coffee/tea drinks + sando",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.285939,
+      47.557196
+    ]
   },
   {
     "name": "Secret Congee",
     "city": "seattle",
-    "area": ["ballard"],
+    "area": [
+      "ballard"
+    ],
     "address": "6301 Seaview Ave NW, Seattle, WA 98107",
     "cuisine": "Chinese",
     "notes": "pricy but the congee is 1000% worth it!!! you tiao are very good too. soy milk was just ok. very tiny space but they turn over tables really quickly. 1 of the servers is a lady with a vintage sonics apron. same owners as ginger & scallion.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.406625,
+      47.67438
+    ]
   },
   {
     "name": "Musang",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2524 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Filipino/PNW",
     "notes": "james beard finalist. SO SO GOOD. fried chicken w gravy is an elevated jolibee. fish always hits. *garlic rice*",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.31278,
+      47.580372
+    ]
   },
   {
     "name": "Stevie's Famous Pizza",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "4864 Beacon Ave S, Seattle, WA 98108",
     "cuisine": "American/pizza",
     "notes": "inside a bar, Seattle Times number 1 pizza, toppings always REALLY good quality, really really good sourdough crust!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.303989,
+      47.559053
+    ]
   },
   {
     "name": "Homer",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3013 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Mediterranean",
     "notes": "no reservations, hard to get a table. lamb ragu and maple tahini soft serve were really good, sister restaurant to Milk Drunk",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.310089,
+      47.576607
+    ]
   },
   {
     "name": "Bar del Corso",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3057 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Italian/pizza",
     "notes": "pizza only! hard to get a table, slow service day we went but the pizza was great",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.309578,
+      47.575369
+    ]
   },
   {
     "name": "Oak",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3019 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "American/gastropub",
     "notes": "better than expected, can almost always find a table with all the other restaurants in the area always being full",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.309974,
+      47.576412
+    ]
   },
   {
     "name": "Fable All Day Cafe",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3309A Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Coffee/wine",
     "notes": "wine/coffee bar and small cafe eats, cozy and comfy, great place to get a drink if in line for familyfriend",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.309054,
+      47.573766
+    ]
   },
   {
     "name": "Little Thing Wine",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3003 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Bar/wine",
     "notes": "cute lil wine bar, A+ vibez, dog friendly!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.310177,
+      47.576791
+    ]
   },
   {
     "name": "The Coupe and Flute",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "3015 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "French/wine",
     "notes": "French cafe, specializes in champagne and sparkling wines. Nice place to get brunch and bubbly. interesting menu items - garam masala bread pudding, cauli frittata, duck eggs benedict, really good fries",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.310019,
+      47.576509
+    ]
   },
   {
     "name": "LoxSmith Bagels",
     "city": "seattle",
-    "area": ["delridge"],
+    "area": [
+      "delridge"
+    ],
     "address": "5608 Delridge Wy SW, Seattle, WA 98106",
     "cuisine": "Bagels",
     "notes": "zaatar bagel is fire. solid bagels and schmear, only drip coffee tho no espresso drinks",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.362737,
+      47.551572
+    ]
   },
   {
     "name": "Carnitas Michoacan",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2500 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Mexican/tacos",
     "notes": "smokiest deepest flavor carnitas, good al pastor, chorizo is just ok. they have all day breakfast menu incl chilaquiles!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.313127,
+      47.580828
+    ]
   },
   {
     "name": "Perihelion Brewery",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2800 16th Ave S, Seattle, WA 98144",
     "cuisine": "American/gastropub",
     "notes": "great vibez, great food. also make their own ice cream like rose pistachio!!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.31179,
+      47.578435
+    ]
   },
   {
     "name": "Cloud Cafe",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2552 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Vietnamese",
     "notes": "casual trendy viet spot, does the job but not spectacular. pho is solid. banh mi is ok but sauce is too sweet. egg rolls are nice and crispy but the dipping sauce is sweet chili gooey stuff not nuoc mam.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.312324,
+      47.579738
+    ]
   },
   {
     "name": "Tenoch Mexican Grill",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2414 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Mexican",
     "notes": "cute spot, but food was meh",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.314132,
+      47.581644
+    ]
   },
   {
     "name": "Milk Drunk",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2805 Beacon Ave S, Seattle, WA 98144",
     "cuisine": "Ice cream",
     "notes": "soft serve place, also does fried chicken, really good fries, sister restaurant to Homer",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.311761,
+      47.578416
+    ]
   },
   {
     "name": "Hiroshi's Take Out and Deli",
     "city": "seattle",
-    "area": ["beacon_hill"],
+    "area": [
+      "beacon_hill"
+    ],
     "address": "2521 15th Ave S, Seattle, WA 98144",
     "cuisine": "Japanese",
     "notes": "teriyaki and poke place, only open weekdays lunch, solid tuna, hits the spot",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.313644,
+      47.580441
+    ]
   },
   {
     "name": "Phocific Standard Time",
     "city": "seattle",
-    "area": ["belltown"],
+    "area": [
+      "belltown"
+    ],
     "address": "1923 7th Ave, Seattle, WA 98101",
     "cuisine": "Vietnamese/bar",
     "notes": "bar in the \"treehouse\" of phocific standard time. same owners as the boat. cool place with yummy drinks but limited seats, limited food options.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.337282,
+      47.614738
+    ]
   },
   {
     "name": "Sushi by Scratch",
     "city": "seattle",
-    "area": ["belltown"],
+    "area": [
+      "belltown"
+    ],
     "address": "2331 6th Ave, Seattle, WA 98121",
     "cuisine": "Japanese/sushi",
     "notes": "chain, omakase. montecito location was michelin 1 star in 2021 and 2022, fusion and innovative stuff, not really classic sushi but still yummy.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.34336,
+      47.61706
+    ]
   },
   {
     "name": "5 Point Cafe",
     "city": "seattle",
-    "area": ["belltown"],
+    "area": [
+      "belltown"
+    ],
     "address": "415 Cedar St, Seattle, WA 98121",
     "cuisine": "American/Diner",
     "notes": "24-hour diner/bar, divey late night eats, solid burgers",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.347226,
+      47.618176
+    ]
   },
   {
     "name": "Ramen Danbo",
     "city": "seattle",
-    "area": ["capitol_hill"],
+    "area": [
+      "capitol_hill"
+    ],
     "address": "1222 E Pine St, Seattle, WA 98122",
     "cuisine": "Japanese/ramen",
     "notes": "best ramen we have had in USA, you can customize your noodle consistency, broth strength, etc.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.315921,
+      47.615438
+    ]
   },
   {
     "name": "Ramie",
     "city": "seattle",
-    "area": ["capitol_hill"],
+    "area": [
+      "capitol_hill"
+    ],
     "address": "1529 14th Ave, Seattle, WA 98122",
     "cuisine": "Vietnamese",
     "notes": "James Beard Semifinalist, high end, cutting edge Viet food, happy hour runs 5-8, octopus was great, bone marrow v savory, fish",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.314468,
+      47.614935
+    ]
   },
   {
     "name": "COMMUNION Restaurant & Bar",
     "city": "seattle",
-    "area": ["central_district"],
+    "area": [
+      "central_district"
+    ],
     "address": "2350 E Union St, Seattle, WA 98122",
     "cuisine": "American/soul food",
     "notes": "Black woman owned James Beard restaurant, everything hits, pickled veg with beef neck was the PERFECT combo, berebere chicken!!",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.3017,
+      47.61314
+    ]
   },
   {
     "name": "Flour Box",
     "city": "seattle",
-    "area": ["columbia_city"],
+    "area": [
+      "columbia_city"
+    ],
     "address": "5520 Rainier Ave S, Seattle, WA 98118",
     "cuisine": "Donuts",
     "notes": "the fluffiest freshest yummiest donuts + other pastries!! basque cheesecake is amazing. also their drinks always hit - jasmine rice horchata is comfortable goodness. open 10am Thu-Sun, always a long line so be prepared.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.27775,
+      47.55225
+    ]
   },
   {
     "name": "Purple Cafe and Wine Bar",
     "city": "seattle",
-    "area": ["downtown"],
+    "area": [
+      "downtown"
+    ],
     "address": "1225 4th Ave, Seattle, WA 98101",
     "cuisine": "American/wine",
     "notes": "fun place next to benaroya. wine staircase (!!!) def most impressive thing there. mussels with squid ink pasta was yummy and garlicky and all there in flavor, but mussels were a little bit cold and pasta a touch overcooked. j got steak. go for vibes and wine not food",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.335049,
+      47.607971
+    ]
   },
   {
     "name": "Lark",
     "city": "seattle",
-    "area": ["first_hill"],
+    "area": [
+      "first_hill"
+    ],
     "address": "952 E Seneca St, Seattle, WA 98122",
     "cuisine": "American/PNW",
     "notes": "$$$, james beard finalist, oysters were bomb, ravioli was really good, wagyu bavette was really good too",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.319649,
+      47.612384
+    ]
   },
   {
     "name": "Kamonegi",
     "city": "seattle",
-    "area": ["fremont"],
+    "area": [
+      "fremont"
+    ],
     "address": "1054 N 39th St, Seattle, WA 98103",
     "cuisine": "Japanese",
     "notes": "soba & tempura, james beard finalist. dipping soba with veg tempura was soooooo light and refreshing and yummy. excellent soba. few seafood options. adjoining bar is casual and vibey.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.344276,
+      47.654065
+    ]
   },
   {
     "name": "Joule",
     "city": "seattle",
-    "area": ["fremont"],
+    "area": [
+      "fremont"
+    ],
     "address": "3506 Stone Way N, Seattle, WA 98103",
     "cuisine": "American/Korean",
     "notes": "korean-ish steakhouse, great apps, unique japanese curry cocktail, great family style dishes",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.342354,
+      47.6496
+    ]
   },
   {
     "name": "The Boat",
     "city": "seattle",
-    "area": ["international_district"],
+    "area": [
+      "international_district"
+    ],
     "address": "1314 S Jackson St, Seattle, WA 98144",
     "cuisine": "Vietnamese",
     "notes": "they only serve fried chicken (w choice of rice, noodles, or noodle soup) and waffles! james beard finalist. chicken was perfectly crisp on outside, juicy and tender on inside. perfectly seasoned. light and crunchy mango salad and simple broth to go with the intensely flavored chicken. waffles were pandan/banana when we went, also perfectly textured and went amazing with the coconut cream. for drinks they have viet coffee (A+) but also a jameson shot with a chicken broth chaser that tasted like black chicken soup. right next to OG pho bac.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.314791,
+      47.599371
+    ]
   },
   {
     "name": "Chengdu Taste",
     "city": "seattle",
-    "area": ["international_district"],
+    "area": [
+      "international_district"
+    ],
     "address": "504 5th Ave S Ste 106, Seattle, WA 98104",
     "cuisine": "Chinese/Sichuanese",
     "notes": "solid sichuan option, shui zhu yu was alright but didn't have napa, green beans and cabbage were yummy. bright/clean interiors.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.327436,
+      47.598035
+    ]
   },
   {
     "name": "Sisters and Brothers",
     "city": "seattle",
-    "area": ["interbay"],
+    "area": [
+      "interbay"
+    ],
     "address": "544 Elliott Ave W #3910, Seattle, WA 98119",
     "cuisine": "American/Chicken",
     "notes": "Nashville hot fried chicken, chef is from Nashville but wanted to be closer to family in Seattle so moved. the Nashville hot level destroyed our guts it was so hot, but it did taste really really really good. solid bitey coleslaw. wanna try their other sides.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.365047,
+      47.624397
+    ]
   },
   {
     "name": "Driftwood",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "2722 Alki Ave SW, Seattle, WA 98116",
     "cuisine": "American/PNW",
     "notes": "on alki. fresh seafood and all local ingredients! we had crab, sturgeon, trout - all sooooo good",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.410319,
+      47.579049
+    ]
   },
   {
     "name": "The Alley",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4509 California Ave SW, Seattle, WA 98116",
     "cuisine": "Bar/speakeasy",
     "notes": "back of Bonjour Vietnam, very cute and casual, yummy drinks",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.387124,
+      47.562615
+    ]
   },
   {
     "name": "West of Chicago Pizza Company",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "3770 SW Alaska St, Seattle, WA 98126",
     "cuisine": "American/Chicago",
     "notes": "chicago-style deep dish, Italian beef, tastes like nostalgia. they play chicago style blues music. very casual place, can get goose island beers too.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.379811,
+      47.561223
+    ]
   },
   {
     "name": "Supreme",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4521 California Ave SW, Seattle, WA 98116",
     "cuisine": "American/pizza",
     "notes": "unique super yummy pizzas, expensive but worth it, huge serving sizes",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.387095,
+      47.56225
+    ]
   },
   {
     "name": "El Chapulin Oaxaqueno",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4518 Fauntleroy Wy SW, Seattle, WA 98126",
     "cuisine": "Mexican/tacos",
     "notes": "taco truck, solid street style tacos, lots of options",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.379519,
+      47.562349
+    ]
   },
   {
     "name": "Elliott Bay Brewery & Pub",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4720 California Ave SW, Seattle, WA 98116",
     "cuisine": "American/gastropub",
     "notes": "great vibes, solid burger and fries and beer, like hopleaf but more polished and a couple of TVs",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.386522,
+      47.560398
+    ]
   },
   {
     "name": "Sound and Fog",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4735 40th Ave SW, Seattle, WA 98116",
     "cuisine": "Coffee/wine",
     "notes": "coffee/wine/beer. cardamom latte is soooo good!! deliberately no wifi. great vibey place with friendly staff, awesome to paint or read a book there but they have really short hours.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.38321,
+      47.55985
+    ]
   },
   {
     "name": "MOTO Pizza",
     "city": "seattle",
-    "area": ["west_seattle"],
+    "area": [
+      "west_seattle"
+    ],
     "address": "4526 42nd Ave SW, Seattle, WA 98116",
     "cuisine": "American/pizza",
     "notes": "1 location in w seattle, 1 in belltown, also in T-mobile park. worth the hype!! crust is v buttery. detroit style pizza with unique toppings! crab pizza was A+",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.38508,
+      47.562071
+    ]
   },
   {
     "name": "Secret Fort",
     "city": "seattle",
-    "area": ["wallingford"],
+    "area": [
+      "wallingford"
+    ],
     "address": "1911 N 45th St, Seattle, WA 98103",
     "cuisine": "Japanese/yakitori",
     "notes": "retro 80s vibez yakitori place, SO SO GOOD, dango pork was soooooo yummy",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.334439,
+      47.661169
+    ]
   },
   {
     "name": "The Sandwich Saga",
     "city": "seattle",
-    "area": ["ballard"],
+    "area": [
+      "ballard"
+    ],
     "address": "936 NW 49th St, Seattle, WA 98107",
     "cuisine": "American/Sandwiches",
     "notes": "Rotating at Fair Isle, Piri Piri and Italian Beef Sandwiches are fantastic, quality bread, kinda messy but packed with flavor",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.370135,
+      47.664565
+    ]
   },
   {
     "name": "Un Bien",
     "city": "seattle",
-    "area": ["ballard"],
+    "area": [
+      "ballard"
+    ],
     "address": "7302.5 15th Ave NW, Seattle, WA 98117",
     "cuisine": "Caribbean/sandwiches",
     "notes": "best sandwiches everrr. outdoor seating only so get to go if cold. all options on menu are bomb. owned by kids of the original owner of paseo. paseo locations now owned by someone else.",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.376495,
+      47.68168
+    ]
   },
   {
     "name": "Le Caviste",
@@ -528,6 +861,10 @@
     "address": "1919 7th Ave, Seattle, WA 98101",
     "cuisine": "French Wine Bar",
     "notes": "James Beard Semifinalist",
-    "dined": true
+    "dined": true,
+    "coordinates": [
+      -122.337261,
+      47.614714
+    ]
   }
 ]

@@ -1,45 +1,29 @@
 import mapboxgl from 'mapbox-gl';
 import { useEffect, useRef, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { FeatureCollection, Point } from 'geojson';
 import { Restaurant } from '../common/types.ts';
 
 mapboxgl.accessToken = String(import.meta.env.VITE_MAPBOX_TOKEN);
 
-interface Coordinates {
-  longitude: number;
-  latitude: number;
-  accuracy?: string;
-  routable_points?: { name?: string; longitude: number; latitude: number }[];
+interface GeocodedFeature {
+  geometry: {
+    coordinates: [number, number];
+  };
 }
 
-interface Properties {
-  mapbox_id: string;
-  feature_type:
-    | 'country'
-    | 'region'
-    | 'postcode'
-    | 'district'
-    | 'place'
-    | 'locality'
-    | 'neighborhood'
-    | 'street'
-    | 'address';
-  name: string;
-  name_preferred?: string;
-  full_address?: string;
-  coordinates: Coordinates;
+interface GeocodedFeatureCollection {
+  features?: GeocodedFeature[];
 }
 
-interface BatchRequestBodyFragment {
+interface BatchGeocodeResponse {
+  batch: GeocodedFeatureCollection[];
+}
+
+interface BatchGeocodeRequest {
   types: string[];
   q: string;
   bbox: [number, number, number, number];
   limit: number;
-}
-
-interface BatchResponseBody {
-  batch: FeatureCollection<Point, Properties>[];
 }
 
 interface MapProps {
@@ -88,17 +72,38 @@ export default function Map({
   useEffect(() => {
     if (!map) return;
 
-    const fetchCoordinates = async () => {
-      try {
-        const requestBody: BatchRequestBodyFragment[] = restaurants.map(
-          (r): BatchRequestBodyFragment => ({
-            types: ['address'],
-            q: r.address,
-            bbox: [-122.5, 47, -122, 48],
-            limit: 1
-          })
-        );
+    const placeMarker = (
+      r: Restaurant,
+      index: number,
+      lngLat: [number, number]
+    ) => {
+      const [lng, lat] = lngLat;
+      const el = document.createElement('button');
+      el.className =
+        'w-7 h-7 rounded-full text-inverse-on-surface text-xs font-bold border-2 border-inverse-on-surface shadow-md cursor-pointer bg-inverse-surface hover:bg-on-primary-container transition-colors flex items-center justify-center';
+      el.textContent = String(index + 1);
+      el.addEventListener('click', () => onMarkerClick(r.name));
+      new mapboxgl.Marker({ element: el }).setLngLat([lng, lat]).addTo(map);
+      markersRef.current[r.name] = { el, lngLat: [lng, lat] };
+    };
 
+    const missing = restaurants.filter((r) => !r.coordinates);
+
+    restaurants.forEach((r, index) => {
+      if (r.coordinates) placeMarker(r, index, r.coordinates);
+    });
+
+    if (missing.length === 0) return;
+
+    const geocodeFallback = async () => {
+      const requestBody: BatchGeocodeRequest[] = missing.map((r) => ({
+        types: ['address'],
+        q: r.address,
+        bbox: [-122.6, 47.0, -121.9, 47.9],
+        limit: 1
+      }));
+
+      try {
         const response = await fetch(
           `https://api.mapbox.com/search/geocode/v6/batch?access_token=${mapboxgl.accessToken}`,
           {
@@ -107,43 +112,21 @@ export default function Map({
             body: JSON.stringify(requestBody)
           }
         );
-
-        const responseBody = (await response.json()) as BatchResponseBody;
-
-        responseBody.batch.forEach((featureCollection, index) => {
-          if (
-            featureCollection &&
-            Array.isArray(featureCollection.features) &&
-            featureCollection.features.length > 0
-          ) {
-            const [longitude, latitude] =
-              featureCollection.features[0].geometry.coordinates;
-            const restaurant = restaurants[index];
-
-            const el = document.createElement('button');
-            el.className =
-              'w-7 h-7 rounded-full text-inverse-on-surface text-xs font-bold border-2 border-inverse-on-surface shadow-md cursor-pointer bg-inverse-surface hover:bg-on-primary-container transition-colors flex items-center justify-center';
-            el.textContent = String(index + 1);
-            el.addEventListener('click', () => onMarkerClick(restaurant.name));
-
-            new mapboxgl.Marker({ element: el })
-              .setLngLat([longitude, latitude])
-              .addTo(map);
-
-            markersRef.current[restaurant.name] = {
-              el,
-              lngLat: [longitude, latitude]
-            };
-          } else {
-            console.warn(`No features for address at index ${index}`);
+        const { batch } = (await response.json()) as BatchGeocodeResponse;
+        batch.forEach((fc, i) => {
+          if (fc.features && fc.features.length > 0) {
+            const r = missing[i];
+            const globalIndex = restaurants.indexOf(r);
+            const lngLat = fc.features[0].geometry.coordinates;
+            placeMarker(r, globalIndex, lngLat);
           }
         });
-      } catch (error) {
-        console.error('Error fetching coordinates:', error);
+      } catch (err) {
+        console.error('Geocode fallback failed:', err);
       }
     };
 
-    fetchCoordinates().catch(console.error);
+    void geocodeFallback();
     // restaurants and onMarkerClick are stable (static data + stable callback)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);

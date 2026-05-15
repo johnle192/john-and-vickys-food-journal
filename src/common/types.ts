@@ -6,4 +6,5 @@ export interface Restaurant {
   cuisine: string;
   notes: string;
   dined: boolean;
+  coordinates?: [number, number]; // [lng, lat]
 }
