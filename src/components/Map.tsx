@@ -153,10 +153,8 @@ export default function Map({
   }, [activeId, map]);
 
   return (
-    <div className="map-container h-full w-full lg:sticky lg:left-auto lg:right-0 lg:top-20 lg:z-10 lg:h-[calc(100vh-8rem)] lg:w-3/5">
-      <div className="m-4 h-full overflow-hidden">
-        <div ref={mapContainer} className="h-full w-full" />
-      </div>
+    <div className="relative h-full w-full">
+      <div ref={mapContainer} className="absolute inset-0 lg:inset-4" />
     </div>
   );
 }

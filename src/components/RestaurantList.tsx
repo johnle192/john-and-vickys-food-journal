@@ -31,22 +31,21 @@ export default function RestaurantList({
   }, [restaurants]);
 
   return (
-    <div className="resturant-container mb-4 w-full lg:sticky lg:top-8 lg:w-2/5 lg:shrink-0">
-      <div className="m-4 overflow-hidden bg-surface">
-        <ul role="list" className="divide-y divide-outline-variant">
-          {restaurants.map((item, i) => (
-            <li
-              key={item.name}
-              ref={(el) => {
-                if (el) listRefs.current[item.name] = el;
-              }}
-              data-name={item.name}
-              className={`group min-h-[60vh] px-8 py-6 transition-colors duration-200 ${
-                activeId === item.name
-                  ? 'bg-primary-container'
-                  : 'hover:bg-surface-variant'
-              }`}
-            >
+    <div className="w-full pb-20 lg:pb-0">
+      <ul role="list" className="divide-y divide-outline-variant">
+        {restaurants.map((item, i) => (
+          <li
+            key={item.name}
+            ref={(el) => {
+              if (el) listRefs.current[item.name] = el;
+            }}
+            data-name={item.name}
+            className={`group min-h-[60vh] px-8 py-6 transition-colors duration-200 ${
+              activeId === item.name
+                ? 'lg:bg-primary-container'
+                : 'hover:bg-surface-variant'
+            }`}
+          >
               <div className="mb-1 flex items-baseline gap-3">
                 <span className="shrink-0 text-lg font-black tabular-nums text-primary">
                   {i + 1}
@@ -89,8 +88,7 @@ export default function RestaurantList({
               </p>
             </li>
           ))}
-        </ul>
-      </div>
+      </ul>
     </div>
   );
 }
