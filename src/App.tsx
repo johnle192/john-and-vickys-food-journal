@@ -16,7 +16,9 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const stored = localStorage.getItem('theme');
     if (stored === 'light' || stored === 'dark') return stored;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
   });
 
   useEffect(() => {
@@ -28,12 +30,15 @@ function App() {
 
   const handleMarkerClick = (name: string) => {
     setActiveId(name);
-    listRefs.current[name]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    listRefs.current[name]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
   };
 
   return (
-    <div className="flex h-dvh flex-col">
-      <header className="shrink-0 border-b border-outline-variant bg-surface z-50">
+    <div className="flex h-dvh w-dvw flex-col">
+      <header className="z-50 shrink-0 border-b border-outline-variant bg-surface">
         <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <h3 className="text-base font-semibold leading-6 text-on-surface">
             {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -41,17 +46,26 @@ function App() {
           </h3>
           <button
             onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="rounded-full p-2 bg-surface-variant text-on-surface-variant transition-colors hover:bg-outline-variant hover:text-on-surface"
+            aria-label={
+              theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+            }
+            className="rounded-full bg-surface-variant p-2 text-on-surface-variant transition-colors hover:bg-outline-variant hover:text-on-surface"
           >
-            <i className="fa-duotone fa-light fa-moon-over-sun fa-lg" aria-hidden="true" />
+            <i
+              className="fa-duotone fa-light fa-moon-over-sun fa-lg"
+              aria-hidden="true"
+            />
           </button>
         </div>
       </header>
 
       <main className="relative flex flex-1 overflow-hidden">
         {/* List panel: full-width on mobile (hidden when map is shown), 2/5 on desktop */}
-        <div className={`${showMap ? 'hidden lg:flex' : 'flex'} w-full lg:w-2/5 flex-col overflow-y-auto`}>
+        <div
+          className={`${
+            showMap ? 'hidden lg:flex' : 'flex'
+          } w-full flex-col overflow-y-auto lg:w-2/5`}
+        >
           <RestaurantList
             restaurants={restaurants}
             activeId={activeId}
@@ -61,7 +75,11 @@ function App() {
         </div>
 
         {/* Map panel: full-width on mobile (hidden when list is shown), 3/5 on desktop */}
-        <div className={`${showMap ? 'flex' : 'hidden lg:flex'} relative w-full lg:w-3/5`}>
+        <div
+          className={`${
+            showMap ? 'flex' : 'hidden lg:flex'
+          } relative h-full w-full lg:w-3/5`}
+        >
           <Map
             restaurants={restaurants}
             activeId={activeId}
@@ -79,24 +97,30 @@ function App() {
       </main>
 
       {/* Mobile LIST / MAP toggle pill */}
-      <div className="fixed bottom-6 inset-x-0 flex justify-center z-50 lg:hidden">
+      <div className="fixed inset-x-0 bottom-6 z-50 flex justify-center lg:hidden">
         <div className="flex overflow-hidden rounded-full border border-outline-variant bg-surface shadow-xl">
           <button
             onClick={() => setShowMap(false)}
-            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors ${
-              !showMap ? 'bg-primary text-on-primary' : 'text-on-surface-variant'
+            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-on-primary transition-colors ${
+              !showMap ? 'bg-primary' : ''
             }`}
           >
-            <i className="fa-solid fa-list-ul text-xs" aria-hidden="true" />
+            <i
+              className="fa-duotone fa-light fa-list-ul text-xs"
+              aria-hidden="true"
+            />
             LIST
           </button>
           <button
             onClick={() => setShowMap(true)}
-            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors ${
-              showMap ? 'bg-primary text-on-primary' : 'text-on-surface-variant'
+            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-on-primary transition-colors ${
+              showMap ? 'bg-primary' : ''
             }`}
           >
-            <i className="fa-solid fa-map text-xs" aria-hidden="true" />
+            <i
+              className="fa-duotone fa-light fa-map text-xs"
+              aria-hidden="true"
+            />
             MAP
           </button>
         </div>
