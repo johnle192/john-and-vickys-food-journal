@@ -71,9 +71,13 @@ so and tell the owner what to look at.
   "No result for" line means a bad address. If a restaurant is still missing
   coordinates, `Map.tsx` looks it up on every page load. That works, but costs a
   Mapbox request per visit, so don't leave it that way.
-- The source of truth is the owner's Google Sheet "SEA food!". Four rows were
-  skipped during import because their data is bad. They're listed in
-  `progress.md`. Don't guess addresses for them.
+- The source of truth is the owner's Google Sheet "SEA food!". Only import rows
+  where `Dined` is TRUE and `Address` is filled in. Map the columns to `name`,
+  `city`, `area[]`, `cuisine`, `notes`, `address` and `dined`, and skip any name
+  that's already in the JSON. Four rows were skipped during the first import
+  because their data is bad. They're tracked in the owner's TickTick
+  ("Food Journal: fix and re-import the 4 skipped restaurants"). Don't guess
+  addresses for them.
 
 ## Styling rules
 
@@ -177,5 +181,5 @@ Change these only when asked, each in its own focused change:
   components, props typed with an `interface`, and Tailwind classes inline.
 - Don't commit unless asked. When you do, use `feat:` / `fix:` style messages to
   match the git history.
-- `progress.md` is the running log of what's been built. Update it when you
-  finish a feature.
+- Todos live in the owner's TickTick (📔Projects, tag `food-journal`), not in
+  a file in the repo.
