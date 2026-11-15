@@ -102,12 +102,9 @@ so and tell the owner what to look at.
   `prefers-color-scheme`. `theme.override.css` overrides it based on
   `<html data-theme="...">`, which App.tsx sets from the toggle and saves to
   `localStorage`. Any change to theming must keep both layers working.
-- **`src/index.css` still has leftover Vite starter styles** for `button`, `a`,
-  `h1` and `body`. The global `button` rule sets `background-color: #1a1a1a`,
-  and it comes after Tailwind's reset in the CSS. So any `<button>` without its
-  own `bg-*` class shows up dark gray. This is why the inactive LIST/MAP pill
-  segment is dark. Give buttons an explicit background, or clean up
-  `index.css` deliberately in a separate change.
+- **Buttons and links get only Tailwind's reset**, which makes a `<button>`
+  transparent with no padding. Give every button its own `bg-*`, text color and
+  padding classes. The map markers in `Map.tsx` are `<button>`s too.
 - Icons come from a **Font Awesome Pro kit** loaded in `index.html`
   (`fa-duotone fa-light ...`). There's no npm package for it, so icons won't
   show offline. Check that a new icon exists in FA Pro before using it.
