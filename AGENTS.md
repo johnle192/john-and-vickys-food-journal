@@ -161,9 +161,6 @@ Guardrails:
 
 Change these only when asked, each in its own focused change:
 
-- Mapbox CSS is loaded twice: from a CDN at v2.8.1 in `index.html`, and through
-  `import 'mapbox-gl/dist/mapbox-gl.css'` in `Map.tsx`. The installed package is
-  v2.15.0.
 - The code that formats `area` names is duplicated in `RestaurantList.tsx` and
   `MobileCarousel.tsx`.
 - 9 files aren't Prettier-formatted.
