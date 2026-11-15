@@ -39,12 +39,11 @@ scripts/geocode.js            one-off: fills in missing coordinates
 | --- | --- | --- |
 | `npm run dev` | Dev server at http://localhost:5173 | Works. The README says `npm start`, but that's wrong. |
 | `npm run build` | `tsc` type check, then `vite build` | **Passes.** It warns that the bundle is over 500 kB (mostly mapbox-gl). That warning is expected. |
-| `npm run lint` | ESLint with zero warnings allowed | **Fails** on `tailwind.config.ts` because no tsconfig includes that file. `npx eslint src --ext ts,tsx` passes. |
+| `npm run lint` | ESLint with zero warnings allowed | **Passes.** It prints a "React version not specified" notice from eslint-plugin-react, which doesn't count as a warning. |
 | `npx prettier --check src scripts` | Formatting check | 9 files are unformatted (see below). |
 
 There are no tests and no CI. **`npm run build` is the only real safety net.**
-Run it after any change to `.ts` or `.tsx` files, and also run
-`npx eslint src --ext ts,tsx` until the full lint script is fixed.
+Run it and `npm run lint` after any change to `.ts` or `.tsx` files.
 
 **Visual changes need a visual check.** The build doesn't catch layout or color
 bugs. Run `npm run dev` and look at the page at desktop width and at phone width
@@ -162,7 +161,6 @@ Guardrails:
 
 Change these only when asked, each in its own focused change:
 
-- `npm run lint` fails on `tailwind.config.ts`, as described above.
 - Mapbox CSS is loaded twice: from a CDN at v2.8.1 in `index.html`, and through
   `import 'mapbox-gl/dist/mapbox-gl.css'` in `Map.tsx`. The installed package is
   v2.15.0.
