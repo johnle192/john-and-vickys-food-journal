@@ -35,12 +35,12 @@ scripts/geocode.js            one-off: fills in missing coordinates
 
 ## Commands
 
-| Command | What it does | Status (checked 2026-10-29) |
+| Command | What it does | Status (checked 2026-11-14) |
 | --- | --- | --- |
 | `npm run dev` | Dev server at http://localhost:5173 | Works. |
 | `npm run build` | `tsc` type check, then `vite build` | **Passes.** It warns that the bundle is over 500 kB (mostly mapbox-gl). That warning is expected. |
 | `npm run lint` | ESLint with zero warnings allowed | **Passes.** It prints a "React version not specified" notice from eslint-plugin-react, which doesn't count as a warning. |
-| `npx prettier --check src scripts` | Formatting check | 9 files are unformatted (see below). |
+| `npx prettier --check src scripts` | Formatting check | Reports 6 files on purpose: `restaurants.json` and the `css/` token files. Leave them alone (see below). |
 
 There are no tests and no CI. **`npm run build` is the only real safety net.**
 Run it and `npm run lint` after any change to `.ts` or `.tsx` files.
@@ -160,7 +160,6 @@ Change these only when asked, each in its own focused change:
 
 - The code that formats `area` names is duplicated in `RestaurantList.tsx` and
   `MobileCarousel.tsx`.
-- 9 files aren't Prettier-formatted.
 
 ## Working agreements
 

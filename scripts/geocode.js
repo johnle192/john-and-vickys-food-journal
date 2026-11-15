@@ -30,7 +30,7 @@ const requestBody = toGeocode.map((r) => ({
   types: ['address'],
   q: r.address,
   bbox: [-122.6, 47.0, -121.9, 47.9],
-  limit: 1,
+  limit: 1
 }));
 
 const response = await fetch(
@@ -38,7 +38,7 @@ const response = await fetch(
   {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestBody),
+    body: JSON.stringify(requestBody)
   }
 );
 
