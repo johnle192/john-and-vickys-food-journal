@@ -101,8 +101,10 @@ function App() {
         <div className="flex overflow-hidden rounded-full border border-outline-variant bg-surface shadow-xl">
           <button
             onClick={() => setShowMap(false)}
-            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-on-primary transition-colors ${
-              !showMap ? 'bg-primary' : ''
+            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors ${
+              !showMap
+                ? 'bg-primary text-on-primary'
+                : 'bg-surface text-on-surface-variant'
             }`}
           >
             <i
@@ -113,8 +115,10 @@ function App() {
           </button>
           <button
             onClick={() => setShowMap(true)}
-            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-on-primary transition-colors ${
-              showMap ? 'bg-primary' : ''
+            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors ${
+              showMap
+                ? 'bg-primary text-on-primary'
+                : 'bg-surface text-on-surface-variant'
             }`}
           >
             <i

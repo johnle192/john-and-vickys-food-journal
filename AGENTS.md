@@ -35,16 +35,15 @@ scripts/geocode.js            one-off: fills in missing coordinates
 
 ## Commands
 
-| Command | What it does | Status (checked 2026-10-29) |
+| Command | What it does | Status (checked 2026-11-14) |
 | --- | --- | --- |
-| `npm run dev` | Dev server at http://localhost:5173 | Works. The README says `npm start`, but that's wrong. |
+| `npm run dev` | Dev server at http://localhost:5173 | Works. |
 | `npm run build` | `tsc` type check, then `vite build` | **Passes.** It warns that the bundle is over 500 kB (mostly mapbox-gl). That warning is expected. |
-| `npm run lint` | ESLint with zero warnings allowed | **Fails** on `tailwind.config.ts` because no tsconfig includes that file. `npx eslint src --ext ts,tsx` passes. |
-| `npx prettier --check src scripts` | Formatting check | 9 files are unformatted (see below). |
+| `npm run lint` | ESLint with zero warnings allowed | **Passes.** It prints a "React version not specified" notice from eslint-plugin-react, which doesn't count as a warning. |
+| `npx prettier --check src scripts` | Formatting check | Reports 6 files on purpose: `restaurants.json` and the `css/` token files. Leave them alone (see below). |
 
 There are no tests and no CI. **`npm run build` is the only real safety net.**
-Run it after any change to `.ts` or `.tsx` files, and also run
-`npx eslint src --ext ts,tsx` until the full lint script is fixed.
+Run it and `npm run lint` after any change to `.ts` or `.tsx` files.
 
 **Visual changes need a visual check.** The build doesn't catch layout or color
 bugs. Run `npm run dev` and look at the page at desktop width and at phone width
@@ -71,9 +70,13 @@ so and tell the owner what to look at.
   "No result for" line means a bad address. If a restaurant is still missing
   coordinates, `Map.tsx` looks it up on every page load. That works, but costs a
   Mapbox request per visit, so don't leave it that way.
-- The source of truth is the owner's Google Sheet "SEA food!". Four rows were
-  skipped during import because their data is bad. They're listed in
-  `progress.md`. Don't guess addresses for them.
+- The source of truth is the owner's Google Sheet "SEA food!". Only import rows
+  where `Dined` is TRUE and `Address` is filled in. Map the columns to `name`,
+  `city`, `area[]`, `cuisine`, `notes`, `address` and `dined`, and skip any name
+  that's already in the JSON. Four rows were skipped during the first import
+  because their data is bad. They're tracked in the owner's TickTick
+  ("Food Journal: fix and re-import the 4 skipped restaurants"). Don't guess
+  addresses for them.
 
 ## Styling rules
 
@@ -99,12 +102,9 @@ so and tell the owner what to look at.
   `prefers-color-scheme`. `theme.override.css` overrides it based on
   `<html data-theme="...">`, which App.tsx sets from the toggle and saves to
   `localStorage`. Any change to theming must keep both layers working.
-- **`src/index.css` still has leftover Vite starter styles** for `button`, `a`,
-  `h1` and `body`. The global `button` rule sets `background-color: #1a1a1a`,
-  and it comes after Tailwind's reset in the CSS. So any `<button>` without its
-  own `bg-*` class shows up dark gray. This is why the inactive LIST/MAP pill
-  segment is dark. Give buttons an explicit background, or clean up
-  `index.css` deliberately in a separate change.
+- **Buttons and links get only Tailwind's reset**, which makes a `<button>`
+  transparent with no padding. Give every button its own `bg-*`, text color and
+  padding classes. The map markers in `Map.tsx` are `<button>`s too.
 - Icons come from a **Font Awesome Pro kit** loaded in `index.html`
   (`fa-duotone fa-light ...`). There's no npm package for it, so icons won't
   show offline. Check that a new icon exists in FA Pro before using it.
@@ -158,16 +158,8 @@ Guardrails:
 
 Change these only when asked, each in its own focused change:
 
-- `npm run lint` fails on `tailwind.config.ts`, as described above.
-- Mapbox CSS is loaded twice: from a CDN at v2.8.1 in `index.html`, and through
-  `import 'mapbox-gl/dist/mapbox-gl.css'` in `Map.tsx`. The installed package is
-  v2.15.0.
-- Unused dependencies: `@emotion/react`, `@emotion/styled`, `@headlessui/react`
-  (nothing imports them).
 - The code that formats `area` names is duplicated in `RestaurantList.tsx` and
   `MobileCarousel.tsx`.
-- 9 files aren't Prettier-formatted.
-- The README's `npm start` instruction is wrong.
 
 ## Working agreements
 
@@ -177,5 +169,5 @@ Change these only when asked, each in its own focused change:
   components, props typed with an `interface`, and Tailwind classes inline.
 - Don't commit unless asked. When you do, use `feat:` / `fix:` style messages to
   match the git history.
-- `progress.md` is the running log of what's been built. Update it when you
-  finish a feature.
+- Todos live in the owner's TickTick (📔Projects, tag `food-journal`), not in
+  a file in the repo.

@@ -46,48 +46,46 @@ export default function RestaurantList({
                 : 'hover:bg-surface-variant'
             }`}
           >
-              <div className="mb-1 flex items-baseline gap-3">
-                <span className="shrink-0 text-lg font-black tabular-nums text-primary">
-                  {i + 1}
-                </span>
-                <div>
-                  <h3 className="text-base font-semibold leading-6 text-on-surface transition-colors group-hover:text-primary">
-                    {item.name}
-                  </h3>
-                  {item.area?.length > 0 && (
-                    <div className="flex items-center gap-1.5">
-                      <i className="fa-duotone fa-light fa-city"></i>
-                      <span className="text-sm text-on-surface-variant">
-                        {item.area
-                          .map((a) =>
-                            a
-                              .replace(/_/g, ' ')
-                              .replace(/\b\w/g, (c) => c.toUpperCase())
-                          )
-                          .join(', ')}
-                      </span>
-                    </div>
-                  )}
+            <div className="mb-1 flex items-baseline gap-3">
+              <span className="shrink-0 text-lg font-black tabular-nums text-primary">
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="text-base font-semibold leading-6 text-on-surface transition-colors group-hover:text-primary">
+                  {item.name}
+                </h3>
+                {item.area?.length > 0 && (
                   <div className="flex items-center gap-1.5">
-                    <i className="fa-duotone fa-light fa-map-location-dot"></i>
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        item.name + ' ' + item.address
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-on-surface-variant transition-colors hover:text-primary hover:underline"
-                    >
-                      {item.address}
-                    </a>
+                    <i className="fa-duotone fa-light fa-city"></i>
+                    <span className="text-sm text-on-surface-variant">
+                      {item.area
+                        .map((a) =>
+                          a
+                            .replace(/_/g, ' ')
+                            .replace(/\b\w/g, (c) => c.toUpperCase())
+                        )
+                        .join(', ')}
+                    </span>
                   </div>
+                )}
+                <div className="flex items-center gap-1.5">
+                  <i className="fa-duotone fa-light fa-map-location-dot"></i>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      item.name + ' ' + item.address
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-on-surface-variant transition-colors hover:text-primary hover:underline"
+                  >
+                    {item.address}
+                  </a>
                 </div>
               </div>
-              <p className="pt-2 text-sm text-on-surface-variant">
-                {item.notes}
-              </p>
-            </li>
-          ))}
+            </div>
+            <p className="pt-2 text-sm text-on-surface-variant">{item.notes}</p>
+          </li>
+        ))}
       </ul>
     </div>
   );

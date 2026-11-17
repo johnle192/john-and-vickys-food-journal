@@ -10,9 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@headlessui/react": "^2.0.3",
     "@types/geojson": "^7946.0.16",
     "autoprefixer": "^10.4.19",
     "embla-carousel-react": "^8.6.0",
