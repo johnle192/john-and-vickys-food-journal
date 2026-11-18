@@ -66,7 +66,33 @@ export default function Map({
     newMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
     setMap(newMap);
-    return () => newMap.remove();
+
+    // The map is created once, usually while its container is hidden on mobile
+    // (list view is the default). Mapbox GL only re-renders on `window` resize
+    // events, so when the LIST/MAP pill later reveals the container the canvas
+    // keeps its stale (tiny) size and leaves whitespace behind the carousel.
+    // A ResizeObserver re-fits the canvas whenever the container changes size,
+    // including the hidden (0x0) -> visible transition.
+    let frame = 0;
+    const resizeObserver = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        // Skip the 0x0 size we get while the panel is still hidden.
+        if (
+          mapContainer.current?.clientWidth &&
+          mapContainer.current?.clientHeight
+        ) {
+          newMap.resize();
+        }
+      });
+    });
+    resizeObserver.observe(mapContainer.current);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      newMap.remove();
+    };
   }, []);
 
   useEffect(() => {
