@@ -65,8 +65,18 @@ export default function Map({
     });
     newMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
+    // Mapbox measures its container only at creation and on window resize.
+    // On mobile the map starts inside a display:none panel (list view), so it
+    // measures 0x0 and falls back to 400x300. Re-measure whenever the
+    // container's size changes, e.g. when the MAP toggle un-hides it.
+    const resizeObserver = new ResizeObserver(() => newMap.resize());
+    resizeObserver.observe(mapContainer.current);
+
     setMap(newMap);
-    return () => newMap.remove();
+    return () => {
+      resizeObserver.disconnect();
+      newMap.remove();
+    };
   }, []);
 
   useEffect(() => {
