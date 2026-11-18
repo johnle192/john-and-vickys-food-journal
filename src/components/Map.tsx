@@ -65,8 +65,16 @@ export default function Map({
     });
     newMap.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
+    // Mapbox only re-measures on window resize, so it misses the mobile MAP
+    // toggle un-hiding the container. Re-measure on any container resize.
+    const resizeObserver = new ResizeObserver(() => newMap.resize());
+    resizeObserver.observe(mapContainer.current);
+
     setMap(newMap);
-    return () => newMap.remove();
+    return () => {
+      resizeObserver.disconnect();
+      newMap.remove();
+    };
   }, []);
 
   useEffect(() => {
